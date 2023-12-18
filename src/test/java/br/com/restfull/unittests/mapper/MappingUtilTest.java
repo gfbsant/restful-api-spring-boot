@@ -2,100 +2,110 @@ package br.com.restfull.unittests.mapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import br.com.restfull.mapper.MappingUtil;
+import br.com.restfull.model.Book;
 import br.com.restfull.model.Person;
+import br.com.restfull.unittests.mapper.mocks.MockBook;
 import br.com.restfull.unittests.mapper.mocks.MockPerson;
+import br.com.restfull.vo.v1.BookValueObject;
 import br.com.restfull.vo.v1.PersonValueObject;
 
 public class MappingUtilTest {
 
-	    
-	    MockPerson inputObject;
+	    MockPerson inputPersonObject;
+	    MockBook inputBookObject;
 
 	    @BeforeEach
 	    public void setUp() {
-	        inputObject = new MockPerson();
+	    	inputPersonObject = new MockPerson();
+	    	inputBookObject = new MockBook();
 	    }
 
 	    @Test
-	    public void parseEntityToVOTest() {
-	        PersonValueObject output = MappingUtil.parseObject(inputObject.mockEntity(), PersonValueObject.class);
-	        assertEquals(Long.valueOf(0L), output.getKey());
-	        assertEquals("First Name Test0", output.getFirstName());
-	        assertEquals("Last Name Test0", output.getLastName());
-	        assertEquals("Address Test0", output.getAddress());
-	        assertEquals("Male", output.getGender());
+	    public void parseEntityToVOTest() throws ParseException {
+	        PersonValueObject personOutput = MappingUtil.parseObject(inputPersonObject.mockEntity(), PersonValueObject.class);
+	        assertEquals(Long.valueOf(0L), personOutput.getKey());
+	        assertEquals("First Name Test 0", personOutput.getFirstName());
+	        assertEquals("Last Name Test 0", personOutput.getLastName());
+	        assertEquals("Address Test 0", personOutput.getAddress());
+	        assertEquals("Male", personOutput.getGender());
+	        
+	        BookValueObject bookOutput = MappingUtil.parseObject(inputBookObject.mockEntity(), BookValueObject.class);
+	        assertEquals(Long.valueOf(0L), bookOutput.getKey());
+	        assertEquals("Author Test 0", bookOutput.getAuthor());
+	        assertEquals("Title Test 0", bookOutput.getTitle());
+	        assertEquals(0d, bookOutput.getPrice());
+	        assertEquals(new SimpleDateFormat("yyyy-MM-dd").parse("2023-12-17"), bookOutput.getLaunchDate());
 	    }
 
 	    @Test
-	    public void parseEntityListToVOListTest() {
-	        List<PersonValueObject> outputList = MappingUtil.parseListObjects(inputObject.mockEntityList(), PersonValueObject.class);
-	        PersonValueObject outputZero = outputList.get(0);
+	    public void parseEntityListToVOListTest() throws ParseException {
+	        List<PersonValueObject> personOutputList = MappingUtil.parseListObjects(inputPersonObject.mockEntityList(), PersonValueObject.class);
 	        
-	        assertEquals(Long.valueOf(0L), outputZero.getKey());
-	        assertEquals("First Name Test0", outputZero.getFirstName());
-	        assertEquals("Last Name Test0", outputZero.getLastName());
-	        assertEquals("Address Test0", outputZero.getAddress());
-	        assertEquals("Male", outputZero.getGender());
+	        PersonValueObject personOutputTwelve = personOutputList.get(12);
 	        
-	        PersonValueObject outputSeven = outputList.get(7);
+	        assertEquals(Long.valueOf(12L), personOutputTwelve.getKey());
+	        assertEquals("First Name Test 12", personOutputTwelve.getFirstName());
+	        assertEquals("Last Name Test 12", personOutputTwelve.getLastName());
+	        assertEquals("Address Test 12", personOutputTwelve.getAddress());
+	        assertEquals("Male", personOutputTwelve.getGender());
 	        
-	        assertEquals(Long.valueOf(7L), outputSeven.getKey());
-	        assertEquals("First Name Test7", outputSeven.getFirstName());
-	        assertEquals("Last Name Test7", outputSeven.getLastName());
-	        assertEquals("Address Test7", outputSeven.getAddress());
-	        assertEquals("Female", outputSeven.getGender());
+	        List<BookValueObject> bookOutputList = MappingUtil.parseListObjects(inputBookObject.mockEntityList(), BookValueObject.class);
 	        
-	        PersonValueObject outputTwelve = outputList.get(12);
+	        BookValueObject bookOutputTwelve = bookOutputList.get(12);
 	        
-	        assertEquals(Long.valueOf(12L), outputTwelve.getKey());
-	        assertEquals("First Name Test12", outputTwelve.getFirstName());
-	        assertEquals("Last Name Test12", outputTwelve.getLastName());
-	        assertEquals("Address Test12", outputTwelve.getAddress());
-	        assertEquals("Male", outputTwelve.getGender());
+	        assertEquals(Long.valueOf(12), bookOutputTwelve.getKey());
+	        assertEquals("Author Test 12", bookOutputTwelve.getAuthor());
+	        assertEquals("Title Test 12", bookOutputTwelve.getTitle());
+	        assertEquals(12d, bookOutputTwelve.getPrice());
+	        assertEquals(new SimpleDateFormat("yyyy-MM-dd").parse("2023-12-17"), bookOutputTwelve.getLaunchDate());
 	    }
 
 	    @Test
-	    public void parseVOToEntityTest() {
-	        Person output = MappingUtil.parseObject(inputObject.mockVO(), Person.class);
-	        assertEquals(Long.valueOf(0L), output.getId());
-	        assertEquals("First Name Test0", output.getFirstName());
-	        assertEquals("Last Name Test0", output.getLastName());
-	        assertEquals("Address Test0", output.getAddress());
-	        assertEquals("Male", output.getGender());
+	    public void parseVOToEntityTest() throws ParseException {
+	        Person personOutput = MappingUtil.parseObject(inputPersonObject.mockVO(), Person.class);
+	        assertEquals(Long.valueOf(0L), personOutput.getId());
+	        assertEquals("First Name Test 0", personOutput.getFirstName());
+	        assertEquals("Last Name Test 0", personOutput.getLastName());
+	        assertEquals("Address Test 0", personOutput.getAddress());
+	        assertEquals("Male", personOutput.getGender());
+	        
+	        Book bookOutput = MappingUtil.parseObject(inputBookObject.mockVO(), Book.class);
+	        assertEquals(Long.valueOf(0L), bookOutput.getId());
+	        assertEquals("Author Test 0", bookOutput.getAuthor());
+	        assertEquals("Title Test 0", bookOutput.getTitle());
+	        assertEquals(0d, bookOutput.getPrice());
+	        assertEquals(new SimpleDateFormat("yyyy-MM-dd").parse("2023-12-17"), bookOutput.getLaunchDate());
 	    }
 
 	    @Test
-	    public void parserVOListToEntityListTest() {
-	        List<Person> outputList = MappingUtil.parseListObjects(inputObject.mockVOList(), Person.class);
-	        Person outputZero = outputList.get(0);
+	    public void parserVOListToEntityListTest() throws ParseException {
+	        List<Person> personOutputList = MappingUtil.parseListObjects(inputPersonObject.mockVOList(), Person.class);
 	        
-	        assertEquals(Long.valueOf(0L), outputZero.getId());
-	        assertEquals("First Name Test0", outputZero.getFirstName());
-	        assertEquals("Last Name Test0", outputZero.getLastName());
-	        assertEquals("Address Test0", outputZero.getAddress());
-	        assertEquals("Male", outputZero.getGender());
+	        Person personOutputTwelve = personOutputList.get(12);
 	        
-	        Person outputSeven = outputList.get(7);
+	        assertEquals(Long.valueOf(12L), personOutputTwelve.getId());
+	        assertEquals("First Name Test 12", personOutputTwelve.getFirstName());
+	        assertEquals("Last Name Test 12", personOutputTwelve.getLastName());
+	        assertEquals("Address Test 12", personOutputTwelve.getAddress());
+	        assertEquals("Male", personOutputTwelve.getGender());
 	        
-	        assertEquals(Long.valueOf(7L), outputSeven.getId());
-	        assertEquals("First Name Test7", outputSeven.getFirstName());
-	        assertEquals("Last Name Test7", outputSeven.getLastName());
-	        assertEquals("Address Test7", outputSeven.getAddress());
-	        assertEquals("Female", outputSeven.getGender());
+	        List<Book> outputList = MappingUtil.parseListObjects(inputBookObject.mockVOList(), Book.class);
 	        
-	        Person outputTwelve = outputList.get(12);
+	        Book bookOutputTwelve = outputList.get(12);
 	        
-	        assertEquals(Long.valueOf(12L), outputTwelve.getId());
-	        assertEquals("First Name Test12", outputTwelve.getFirstName());
-	        assertEquals("Last Name Test12", outputTwelve.getLastName());
-	        assertEquals("Address Test12", outputTwelve.getAddress());
-	        assertEquals("Male", outputTwelve.getGender());
+	        assertEquals(Long.valueOf(12L), bookOutputTwelve.getId());
+	        assertEquals("Author Test 12", bookOutputTwelve.getAuthor());
+	        assertEquals("Title Test 12", bookOutputTwelve.getTitle());
+	        assertEquals(12d, bookOutputTwelve.getPrice());
+	        assertEquals(new SimpleDateFormat("yyyy-MM-dd").parse("2023-12-17"), bookOutputTwelve.getLaunchDate());
 	    }
 	
 }
