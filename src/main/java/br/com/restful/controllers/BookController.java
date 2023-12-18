@@ -1,4 +1,4 @@
-package br.com.restfull.controllers;
+package br.com.restful.controllers;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.restfull.services.BookService;
-import br.com.restfull.vo.v1.BookValueObject;
+import br.com.restful.services.BookService;
+import br.com.restful.vo.v1.BookValueObject;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;

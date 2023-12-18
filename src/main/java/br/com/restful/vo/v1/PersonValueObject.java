@@ -1,46 +1,43 @@
-package br.com.restfull.model;
+package br.com.restful.vo.v1;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import org.springframework.hateoas.RepresentationModel;
 
-@Entity
-@Table(name = "tb_person")
-public class Person implements Serializable {
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({ "id", "firstName", "lastName", "address", "gender" })
+public class PersonValueObject extends RepresentationModel<PersonValueObject> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@Column(name = "first_name")
+	@JsonProperty("id")
+	private Long key;
+
+	@JsonProperty("first_name")
 	private String firstName;
-	
-	@Column(name = "last_name")
+
+	@JsonProperty("last_name")
 	private String lastName;
 
-	@Column
+	@JsonProperty("address")
 	private String address;
-	
-	@Column
+
+	// @JsonIgnore
+	@JsonProperty("gender")
 	private String gender;
 
-	public Person() {
+	public PersonValueObject() {
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public Long getKey() {
+		return key;
 	}
 
-	public Long getId() {
-		return id;
+	public void setKey(Long key) {
+		this.key = key;
 	}
 
 	public String getFirstName() {
@@ -77,21 +74,23 @@ public class Person implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(key);
+		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Person other = (Person) obj;
-		return Objects.equals(id, other.id);
+		PersonValueObject other = (PersonValueObject) obj;
+		return Objects.equals(key, other.key);
 	}
 
 
-	
 }

@@ -1,4 +1,4 @@
-package br.com.restfull.model;
+package br.com.restful.model;
 
 import java.io.Serializable;
 import java.util.Date;

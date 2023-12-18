@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import br.com.restfull.model.Book;
-import br.com.restfull.vo.v1.BookValueObject;
+import br.com.restful.model.Book;
+import br.com.restful.vo.v1.BookValueObject;
 
 public class MockBook {
 

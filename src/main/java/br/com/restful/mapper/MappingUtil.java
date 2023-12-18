@@ -1,14 +1,14 @@
-package br.com.restfull.mapper;
+package br.com.restful.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
 
-import br.com.restfull.model.Book;
-import br.com.restfull.model.Person;
-import br.com.restfull.vo.v1.BookValueObject;
-import br.com.restfull.vo.v1.PersonValueObject;
+import br.com.restful.model.Book;
+import br.com.restful.model.Person;
+import br.com.restful.vo.v1.BookValueObject;
+import br.com.restful.vo.v1.PersonValueObject;
 
 public class MappingUtil {
 

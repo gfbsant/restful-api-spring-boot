@@ -1,19 +1,20 @@
-package br.com.restfull.services;
+package br.com.restful.services;
 
 import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import br.com.restful.controllers.PersonController;
+import br.com.restful.exceptions.ResourceNotFoundException;
+import br.com.restful.mapper.MappingUtil;
+import br.com.restful.model.Person;
+import br.com.restful.repository.PersonRepository;
+import br.com.restful.vo.v1.PersonValueObject;
+
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
-
-import br.com.restfull.controllers.PersonController;
-import br.com.restfull.exceptions.ResourceNotFoundException;
-import br.com.restfull.mapper.MappingUtil;
-import br.com.restfull.model.Person;
-import br.com.restfull.repository.PersonRepository;
-import br.com.restfull.vo.v1.PersonValueObject;
 
 @Service
 public class PersonService {

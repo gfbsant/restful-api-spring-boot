@@ -1,4 +1,4 @@
-package br.com.restfull.vo.v1;
+package br.com.restful.vo.v1;
 
 import java.io.Serializable;
 import java.util.Date;

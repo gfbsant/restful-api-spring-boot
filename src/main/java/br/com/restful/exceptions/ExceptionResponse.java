@@ -1,4 +1,4 @@
-package br.com.restfull.exceptions;
+package br.com.restful.exceptions;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -20,11 +20,12 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import br.com.restfull.mapper.MappingUtil;
-import br.com.restfull.model.Book;
-import br.com.restfull.repository.BookRepository;
+import br.com.restful.mapper.MappingUtil;
+import br.com.restful.model.Book;
+import br.com.restful.repository.BookRepository;
+import br.com.restful.services.BookService;
+import br.com.restful.vo.v1.BookValueObject;
 import br.com.restfull.unittests.mapper.mocks.MockBook;
-import br.com.restfull.vo.v1.BookValueObject;
 
 @TestInstance(Lifecycle.PER_CLASS)
 @ExtendWith(MockitoExtension.class)

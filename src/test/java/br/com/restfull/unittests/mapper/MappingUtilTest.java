@@ -9,13 +9,13 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import br.com.restfull.mapper.MappingUtil;
-import br.com.restfull.model.Book;
-import br.com.restfull.model.Person;
+import br.com.restful.mapper.MappingUtil;
+import br.com.restful.model.Book;
+import br.com.restful.model.Person;
+import br.com.restful.vo.v1.BookValueObject;
+import br.com.restful.vo.v1.PersonValueObject;
 import br.com.restfull.unittests.mapper.mocks.MockBook;
 import br.com.restfull.unittests.mapper.mocks.MockPerson;
-import br.com.restfull.vo.v1.BookValueObject;
-import br.com.restfull.vo.v1.PersonValueObject;
 
 public class MappingUtilTest {
 

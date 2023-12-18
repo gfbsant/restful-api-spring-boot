@@ -3,8 +3,8 @@ package br.com.restfull.unittests.mapper.mocks;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.restfull.model.Person;
-import br.com.restfull.vo.v1.PersonValueObject;
+import br.com.restful.model.Person;
+import br.com.restful.vo.v1.PersonValueObject;
 
 public class MockPerson {
 	public Person mockEntity() {

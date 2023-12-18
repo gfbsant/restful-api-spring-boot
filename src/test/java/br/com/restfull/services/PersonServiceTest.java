@@ -18,11 +18,12 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import br.com.restfull.mapper.MappingUtil;
-import br.com.restfull.model.Person;
-import br.com.restfull.repository.PersonRepository;
+import br.com.restful.mapper.MappingUtil;
+import br.com.restful.model.Person;
+import br.com.restful.repository.PersonRepository;
+import br.com.restful.services.PersonService;
+import br.com.restful.vo.v1.PersonValueObject;
 import br.com.restfull.unittests.mapper.mocks.MockPerson;
-import br.com.restfull.vo.v1.PersonValueObject;
 
 @TestInstance(Lifecycle.PER_CLASS)
 @ExtendWith(MockitoExtension.class)
