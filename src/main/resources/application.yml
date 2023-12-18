@@ -1,11 +1,15 @@
 spring:
     datasource:
         driver-class-name: org.postgresql.Driver
-        url: jdbc:postgresql://localhost:5432/rest_api
-        username: udemy
+        url: jdbc:postgresql://localhost:5433/api_rest
+        username: student
         password: admin
     jpa:
         hibernate:
-          ddl-auto: update
-        properties: 
-          show-sql: true
+          ddl-auto: none
+
+springdoc:  
+  pathsToMatch: "/api/**/v1/**"
+  swagger-ui:
+    use-root-path: true
+  

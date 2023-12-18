@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.restfull.services.PersonService;
-import br.com.restfull.vo.v1.PersonValueObject;
+import br.com.restfull.services.BookService;
+import br.com.restfull.vo.v1.BookValueObject;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -23,30 +23,30 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("api/person/v1")
-@Tag(name = "People", description = "Endpoints to Manage People")
-public class PersonController {
+@RequestMapping("api/books/v1")
+@Tag(name = "Books", description = "Endpoints to Manage Books")
+public class BookController {
 
 	@Autowired
-	private PersonService personService;
+	private BookService bookService;
 
 	@PostMapping(produces = { "application/json", "application/xml", "application/x-yaml" }, 
 			consumes = {"application/json", "application/xml", "application/x-yaml"})
-	@Operation(summary = "Add a person", description = "Add a new person the table Person", tags = "People", 
+	@Operation(summary = "Add a book", description = "Add a new book the table Book", tags = "Books", 
 		responses = {
 				@ApiResponse(description = "Success", responseCode = "200", 
 						content = @Content(mediaType = "application/json, application/x-yaml, application/xml", 
-						schema = @Schema(implementation = PersonValueObject.class))), 
+						schema = @Schema(implementation = BookValueObject.class))), 
 				@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content), 
 				@ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content), 
 				@ApiResponse(description = "Internal Error", responseCode = "500" , content = @Content), 
 	})
-	public PersonValueObject create(@RequestBody PersonValueObject person) {
-		return personService.create(person);
+	public BookValueObject create(@RequestBody BookValueObject book) {
+		return bookService.create(book);
 	}
 
 	@DeleteMapping(value = "/{id}")
-	@Operation(summary = "Delete a person", description = "Delete a person based on a ID", tags = "People", 
+	@Operation(summary = "Delete a book", description = "Delete a book based on a ID", tags = "Books", 
 		responses = {
 				@ApiResponse(description = "No content", responseCode = "204", content = @Content), 
 				@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content), 
@@ -54,58 +54,58 @@ public class PersonController {
 				@ApiResponse(description = "Internal Error", responseCode = "500" , content = @Content), 
 	})
 	public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
-		personService.delete(id);
+		bookService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 
 	@GetMapping(produces = {"application/json", "application/xml", "application/x-yaml"})
-	@Operation(summary = "Finds all people", description = "Returns all people that exists on the table Person", 
-		tags = "People", 
+	@Operation(summary = "Finds all people", description = "Returns all people that exists on the table Book", 
+		tags = "Books", 
 		responses = {
 				@ApiResponse(description = "Success", responseCode = "200", 
 						content = @Content(mediaType = "application/json, application/x-yaml, application/xml", 
-						array = @ArraySchema(schema = @Schema(implementation = PersonValueObject.class)))), 
+						array = @ArraySchema(schema = @Schema(implementation = BookValueObject.class)))), 
 				@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content), 
 				@ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content), 
 				@ApiResponse(description = "Not Found", responseCode = "404", content = @Content), 
 				@ApiResponse(description = "Internal Error", responseCode = "500" , content = @Content)
 	})
-	public List<PersonValueObject> getAll() {
-		return personService.getAll();
+	public List<BookValueObject> getAll() {
+		return bookService.getAll();
 	}
 
 	@GetMapping(value = "/{id}", produces = { "application/json", "application/xml", "application/x-yaml" })
-	@Operation(summary = "Finds a person", description = "Returns a person based on a ID", tags = "People", 
+	@Operation(summary = "Finds a book", description = "Returns a book based on a ID", tags = "Books", 
 		responses = {
 				@ApiResponse(description = "Success", responseCode = "200", 
 						content = @Content(mediaType = "application/json, application/x-yaml, application/xml", 
-						schema = @Schema(implementation = PersonValueObject.class))), 
+						schema = @Schema(implementation = BookValueObject.class))), 
 				@ApiResponse(description = "No Content", content = @Content, responseCode = "204"), 
 				@ApiResponse(description = "Bad Request", content = @Content, responseCode = "400"), 
 				@ApiResponse(description = "Unauthorized", content = @Content, responseCode = "401"), 
 				@ApiResponse(description = "Not Found", content = @Content, responseCode = "404"), 
 				@ApiResponse(description = "Internal Error", content = @Content, responseCode = "500"), 
 	})
-	public PersonValueObject getById(@PathVariable(value = "id") Long id) {
-		return personService.getById(id);
+	public BookValueObject getById(@PathVariable(value = "id") Long id) {
+		return bookService.getById(id);
 	}
 	
 
 	@PutMapping(produces = { "application/json", "application/xml", "application/x-yaml" }, consumes = {
 			"application/json", "application/xml", "application/x-yaml" })
-	@Operation(summary = "Edit a person", description = "Edit a person based on a json, xml or yaml representation", 
-		tags = "People", 
+	@Operation(summary = "Edit a book", description = "Edit a book based on a json, xml or yaml representation", 
+		tags = "Books", 
 		responses = {
 				@ApiResponse(description = "Success", responseCode = "200", 
 						content = @Content(mediaType = "application/json, application/x-yaml, application/xml", 
-						schema = @Schema(implementation = PersonValueObject.class))), 
+						schema = @Schema(implementation = BookValueObject.class))), 
 				@ApiResponse(description = "Bad Request", content = @Content, responseCode = "400"), 
 				@ApiResponse(description = "Unauthorized", content = @Content, responseCode = "401"), 
 				@ApiResponse(description = "Not Found", content = @Content, responseCode = "404"), 
 				@ApiResponse(description = "Internal Error", content = @Content, responseCode = "500"), 
 	})
-	public PersonValueObject update(@RequestBody PersonValueObject person) {
-		return personService.update(person);
+	public BookValueObject update(@RequestBody BookValueObject book) {
+		return bookService.update(book);
 	}
 
 }
