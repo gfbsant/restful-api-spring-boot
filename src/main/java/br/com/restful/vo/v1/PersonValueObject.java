@@ -4,9 +4,12 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import org.springframework.hateoas.RepresentationModel;
+import org.springframework.lang.Nullable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+
 
 @JsonPropertyOrder({ "id", "firstName", "lastName", "address", "gender" })
 public class PersonValueObject extends RepresentationModel<PersonValueObject> implements Serializable {
@@ -81,15 +84,15 @@ public class PersonValueObject extends RepresentationModel<PersonValueObject> im
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(@Nullable Object obj) {
 		if (this == obj)
 			return true;
 		if (!super.equals(obj))
 			return false;
-		if (getClass() != obj.getClass())
+		if (obj != null && getClass() != obj.getClass())
 			return false;
 		PersonValueObject other = (PersonValueObject) obj;
-		return Objects.equals(key, other.key);
+		return other != null && Objects.equals(key, other.key);
 	}
 
 

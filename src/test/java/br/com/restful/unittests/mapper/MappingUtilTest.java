@@ -1,4 +1,4 @@
-package br.com.restfull.unittests.mapper;
+package br.com.restful.unittests.mapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,10 +12,10 @@ import org.junit.jupiter.api.Test;
 import br.com.restful.mapper.MappingUtil;
 import br.com.restful.model.Book;
 import br.com.restful.model.Person;
+import br.com.restful.unittests.mapper.mocks.MockBook;
+import br.com.restful.unittests.mapper.mocks.MockPerson;
 import br.com.restful.vo.v1.BookValueObject;
 import br.com.restful.vo.v1.PersonValueObject;
-import br.com.restfull.unittests.mapper.mocks.MockBook;
-import br.com.restfull.unittests.mapper.mocks.MockPerson;
 
 public class MappingUtilTest {
 

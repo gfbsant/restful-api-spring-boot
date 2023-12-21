@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Objects;
 
 import org.springframework.hateoas.RepresentationModel;
+import org.springframework.lang.Nullable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -74,15 +75,15 @@ public class BookValueObject extends RepresentationModel<BookValueObject> implem
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(@Nullable Object obj) {
 		if (this == obj)
 			return true;
 		if (!super.equals(obj))
 			return false;
-		if (getClass() != obj.getClass())
+		if (obj != null && getClass() != obj.getClass())
 			return false;
 		BookValueObject other = (BookValueObject) obj;
-		return Objects.equals(key, other.key);
+		return other != null && Objects.equals(key, other.key);
 	}
 
 }

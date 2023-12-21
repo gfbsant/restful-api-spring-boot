@@ -1,4 +1,4 @@
-package br.com.restfull.services;
+package br.com.restful.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -23,9 +23,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import br.com.restful.mapper.MappingUtil;
 import br.com.restful.model.Book;
 import br.com.restful.repository.BookRepository;
-import br.com.restful.services.BookService;
+import br.com.restful.unittests.mapper.mocks.MockBook;
 import br.com.restful.vo.v1.BookValueObject;
-import br.com.restfull.unittests.mapper.mocks.MockBook;
 
 @TestInstance(Lifecycle.PER_CLASS)
 @ExtendWith(MockitoExtension.class)

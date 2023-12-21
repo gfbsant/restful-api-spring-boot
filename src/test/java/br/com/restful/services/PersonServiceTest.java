@@ -1,4 +1,4 @@
-package br.com.restfull.services;
+package br.com.restful.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -21,9 +21,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import br.com.restful.mapper.MappingUtil;
 import br.com.restful.model.Person;
 import br.com.restful.repository.PersonRepository;
-import br.com.restful.services.PersonService;
+import br.com.restful.unittests.mapper.mocks.MockPerson;
 import br.com.restful.vo.v1.PersonValueObject;
-import br.com.restfull.unittests.mapper.mocks.MockPerson;
 
 @TestInstance(Lifecycle.PER_CLASS)
 @ExtendWith(MockitoExtension.class)
@@ -59,9 +58,9 @@ class PersonServiceTest {
 
 		assertTrue(result.toString().contains("links: [</api/person/v1/1>;rel=\"self\"]"));
 		assertEquals(result.getKey(), 1l);
-		assertEquals(result.getFirstName(), "First Name Test1");
-		assertEquals(result.getLastName(), "Last Name Test1");
-		assertEquals(result.getAddress(), "Address Test1");
+		assertEquals(result.getFirstName(), "First Name Test 1");
+		assertEquals(result.getLastName(), "Last Name Test 1");
+		assertEquals(result.getAddress(), "Address Test 1");
 		assertEquals(result.getGender(), "Female");
 	}
 
@@ -83,9 +82,9 @@ class PersonServiceTest {
 
 		assertTrue(result.toString().contains("links: [</api/person/v1/1>;rel=\"self\"]"));
 		assertEquals(result.getKey(), 1l);
-		assertEquals(result.getFirstName(), "First Name Test1");
-		assertEquals(result.getLastName(), "Last Name Test1");
-		assertEquals(result.getAddress(), "Address Test1");
+		assertEquals(result.getFirstName(), "First Name Test 1");
+		assertEquals(result.getLastName(), "Last Name Test 1");
+		assertEquals(result.getAddress(), "Address Test 1");
 		assertEquals(result.getGender(), "Female");
 	}
 
@@ -120,9 +119,9 @@ class PersonServiceTest {
 
 		assertTrue(result.toString().contains("links: [</api/person/v1/1>;rel=\"self\"]"));
 		assertEquals(result.getKey(), 1l);
-		assertEquals(result.getFirstName(), "First Name Test1");
-		assertEquals(result.getLastName(), "Last Name Test1");
-		assertEquals(result.getAddress(), "Address Test1");
+		assertEquals(result.getFirstName(), "First Name Test 1");
+		assertEquals(result.getLastName(), "Last Name Test 1");
+		assertEquals(result.getAddress(), "Address Test 1");
 		assertEquals(result.getGender(), "Female");
 	}
 
@@ -143,9 +142,9 @@ class PersonServiceTest {
 
 			assertTrue(result.toString().contains("links: [</api/person/v1/" + i + ">;rel=\"self\"]"));
 			assertEquals(result.getKey(), Long.valueOf(i));
-			assertEquals(result.getFirstName(), "First Name Test" + i);
-			assertEquals(result.getLastName(), "Last Name Test" + i);
-			assertEquals(result.getAddress(), "Address Test" + i);
+			assertEquals(result.getFirstName(), "First Name Test " + i);
+			assertEquals(result.getLastName(), "Last Name Test " + i);
+			assertEquals(result.getAddress(), "Address Test " + i);
 			assertEquals(result.getGender(), (i % 2) == 0 ? "Male" : "Female");
 			i++;
 		}

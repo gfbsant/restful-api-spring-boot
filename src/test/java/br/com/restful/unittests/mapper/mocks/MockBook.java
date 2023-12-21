@@ -1,4 +1,4 @@
-package br.com.restfull.unittests.mapper.mocks;
+package br.com.restful.unittests.mapper.mocks;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
