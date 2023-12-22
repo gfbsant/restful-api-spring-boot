@@ -1,19 +1,15 @@
 server:
   port: 8888
 cors:
-  originPatterns: http://localhost:3000,http://localhost:8080
+  originPatterns: http://localhost:4200,http://localhost:8080,http://127.0.0.1:8080
 
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: none
-    properties:
-      hibernate:
-        jdbc:
-          lob:
-            non-contextual-creation: true
+      ddl-auto: none    
+
   servlet:
     multipart:
       enabled: true

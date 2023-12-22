@@ -19,17 +19,12 @@ public class PersonValueObject extends RepresentationModel<PersonValueObject> im
 	@JsonProperty("id")
 	private Long key;
 
-	@JsonProperty("first_name")
 	private String firstName;
 
-	@JsonProperty("last_name")
 	private String lastName;
 
-	@JsonProperty("address")
 	private String address;
 
-	// @JsonIgnore
-	@JsonProperty("gender")
 	private String gender;
 
 	public PersonValueObject() {

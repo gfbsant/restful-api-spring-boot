@@ -1,47 +1,26 @@
-package br.com.restful.model;
+package br.com.restful.integration.viewObject;
 
 import java.io.Serializable;
-import java.util.Objects;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "tb_person")
-public class Person implements Serializable {
+public class PersonValueObject implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	
-	@Column(name = "first_name")
 	private String firstName;
-	
-	@Column(name = "last_name")
 	private String lastName;
-
-	@Column
 	private String address;
-	
-	@Column
 	private String gender;
 
-	public Person() {
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+	public PersonValueObject() {
 	}
 
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -78,7 +57,10 @@ public class Person implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 
 	@Override
@@ -89,10 +71,14 @@ public class Person implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Person other = (Person) obj;
-		return Objects.equals(id, other.id);
+		PersonValueObject other = (PersonValueObject) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
-
 
 	
 }

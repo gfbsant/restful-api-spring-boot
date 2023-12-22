@@ -59,7 +59,7 @@ public class BookController {
 	}
 
 	@GetMapping(produces = {"application/json", "application/xml", "application/x-yaml"})
-	@Operation(summary = "Finds all people", description = "Returns all people that exists on the table Book", 
+	@Operation(summary = "Finds all books", description = "Returns all books that exists on the table Book", 
 		tags = "Books", 
 		responses = {
 				@ApiResponse(description = "Success", responseCode = "200", 

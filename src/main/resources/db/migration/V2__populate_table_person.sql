@@ -6,3 +6,5 @@ INSERT INTO tb_person (id, address, first_name, gender, last_name) VALUES
     (7, 'Kentucky - US', 'Muhammad', 'Male', 'Ali'),
     (9, 'Mvezo – South Africa', 'Nelson', 'Male', 'Mvezo'),
     (10, 'Smiljan - Croácia', 'Nikola', 'Male', 'Tesla');
+
+ALTER SEQUENCE tb_person_seq RESTART WITH 11;
