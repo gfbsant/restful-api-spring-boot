@@ -2,7 +2,11 @@ server:
   port: 8888
 cors:
   originPatterns: http://localhost:4200,http://localhost:8080,http://127.0.0.1:8080
-
+security:
+  jwt:
+    token:
+      secret-key: dificil
+      expire-length: 3600000
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver

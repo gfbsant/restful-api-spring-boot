@@ -11,6 +11,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import br.com.restful.exceptions.ExceptionResponse;
+import br.com.restful.exceptions.InvalidJwtAuthenticationException;
 import br.com.restful.exceptions.ResourceNotFoundException;
 
 @ControllerAdvice
@@ -18,16 +19,35 @@ import br.com.restful.exceptions.ResourceNotFoundException;
 public class CostumizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler(Exception.class)
-	public final ResponseEntity<ExceptionResponse> handleAllExceptions(Exception ex, WebRequest request) {
+	public final ResponseEntity<ExceptionResponse> handleAllExceptions(
+			Exception ex, WebRequest request) {
 		ExceptionResponse except = new ExceptionResponse(
-				new Date(), ex.getMessage(), request.getDescription(false));
+				new Date(), 
+				ex.getMessage(), 
+				request.getDescription(false));
 		return new ResponseEntity<ExceptionResponse>(except, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
+
 	@ExceptionHandler(ResourceNotFoundException.class)
-	public final ResponseEntity<ExceptionResponse> handleNotFoundExceptions(Exception ex, WebRequest request) {
-		ExceptionResponse except = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
-		return new ResponseEntity<ExceptionResponse>(except, HttpStatus.NOT_FOUND);
+	public final ResponseEntity<ExceptionResponse> handleNotFoundExceptions(
+		Exception ex, WebRequest request) {
+			ExceptionResponse except = new ExceptionResponse(
+				new Date(), 
+				ex.getMessage(), 
+				request.getDescription(false));
+			return new ResponseEntity<ExceptionResponse>(except, HttpStatus.NOT_FOUND);
 	}
-	
+
+	@ExceptionHandler(InvalidJwtAuthenticationException.class)
+	public final ResponseEntity<ExceptionResponse> handleInvalidJwtAuthenticationExceptions(
+			Exception ex, WebRequest request) {
+		
+		ExceptionResponse exceptionResponse = new ExceptionResponse(
+				new Date(),
+				ex.getMessage(),
+				request.getDescription(false));
+		
+		return new ResponseEntity<>(exceptionResponse, HttpStatus.FORBIDDEN);
+	}
+
 }
